@@ -1,27 +1,35 @@
 {
-  "name": "dev-burger-order-log-api",
-  "version": "1.0.0",
-  "description": "DevClub burger API challenge which will be integrated into a react project.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Luk4x/dev-burger-order-log-API.git"
-  },
-  "keywords": [
-    "Node.js",
-    "Express.js",
-    "Javascript",
-    "BurgerAPI",
-    "DevClub",
-    "HTTP"
-  ],
-  "author": "Luk4x",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Luk4x/dev-burger-order-log-API/issues"
-  },
-  "homepage": "https://github.com/Luk4x/dev-burger-order-log-API#readme"
+    "name": "dev-burger-order-log-api",
+    "version": "1.0.0",
+    "description": "DevClub burger API challenge which will be integrated into a react project.",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "server": "nodemon"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Luk4x/dev-burger-order-log-API.git"
+    },
+    "keywords": [
+        "Node.js",
+        "Express.js",
+        "Javascript",
+        "BurgerAPI",
+        "DevClub",
+        "HTTP"
+    ],
+    "author": "Luk4x",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Luk4x/dev-burger-order-log-API/issues"
+    },
+    "homepage": "https://github.com/Luk4x/dev-burger-order-log-API#readme",
+    "dependencies": {
+        "express": "^4.18.0",
+        "uuid": "^8.3.2"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.15"
+    }
 }
