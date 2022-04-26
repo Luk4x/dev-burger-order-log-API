@@ -16,11 +16,11 @@ Crie uma aplicação que fará o cadastro dos pedidos de uma hamburgueria, e voc
 
 ### Rotas
 
--   `POST /order`: A rota deve receber o `pedido do cliente`, o `nome do cliente` e `o valor do pedido`, essas informações devem ser passadas dentro do corpo(body) da requisição, e com essas informações você deve registrar o novo pedido dentro de um array no seguinte formato: `{ id: "ac3ebf68-e0ad-4c1d-9822-ff1b849589a8", order: "X- Salada, 2 batatas grandes, 1 coca-cola", clientName:"José", price: 44.50, status:"Em preparação" }`. Não se esqueça que o ID deve ser gerado por você, dentro do código utilizando UUID V4, assim que o pedido é criado, você deve sempre colocar o status como "Em preparação".
+-   `POST /order`: A rota deve receber o `pedido do cliente`, o `nome do cliente` e `o valor do pedido`, essas informações devem ser passadas dentro do corpo(body) da requisição, e com essas informações você deve registrar o novo pedido dentro de um array no seguinte formato: `{ id: "ac3ebf68-e0ad-4c1d-9822-ff1b849589a8", order: "X- Salada, 2 batatas grandes, 1 coca-cola", clientName:"José", price: 44.50, status:"Em preparação" }`. Não se esqueça que o ID deve ser gerado por você, dentro do código utilizando UUID V4, assim que o pedido é criado, você deve sempre colocar o `status` como "Em preparação".
 
 -   `GET /orders`: Rota que lista todos os pedidos já feitos.
 
--   `PUT /order/:id`: Essa rota deve alterar um pedido já feito. Pode alterar,um ou todos os dados do pedido.O `id` do pedido deve ser enviado nos parâmetros da rota.
+-   `PUT /order/:id`: O `id` do pedido deve ser enviado nos parâmetros da rota. Sua função é alterar um pedido, podendo ser um, ou todos os dados do pedido (exceto o `id` e o `status`, claro).
 
 -   `DELETE /order/:id`: Essa rota deve deletar um pedido já feito com o `id` enviado nos parâmetros da rota.
 
@@ -64,7 +64,7 @@ o array deve ficar assim:
 
 -   Crie um middleware que será utilizado em todas rotas que recebem o parâmetro ID, então ele deve verificar se o ID passado existe. Se não existir retorne um erro, caso contrário permita a requisição continuar normalmente;
 
--   Crie um middleware que é chamado em todas requisições que tenha um console.log que mostra o método da requisiçao(GET,POST,PUT,DELETE, etc) e também a url da requisição.
+-   Crie um middleware que é chamado em todas requisições que tenha um console.log que mostra o método da requisição(GET,POST,PUT,DELETE, etc) e também a url da requisição.
 
 ### Exemplo
 
