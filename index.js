@@ -8,7 +8,7 @@ const port = 3000;
 // orders made
 const ordersList = [];
 
-//routes
+// routes
 
 // route to request order
 server.post('/order', (req, res) => {
@@ -46,7 +46,7 @@ server.put('/order/:id', (req, res) => {
         return res.status(401).json({ error: 'Unable to change id or status information' });
     }
 
-    // receiving updating order data
+    // receiving order data
     const { order, clienteName, price } = req.body;
     const newData = { order, clienteName, price };
 
@@ -56,7 +56,7 @@ server.put('/order/:id', (req, res) => {
         if (clienteName) ordersList[orderIndex].clienteName = clienteName;
         if (price) ordersList[orderIndex].price = price;
 
-    so, this function allows the user to update one or more data */
+    so, this function allows the user to update one or more data from a order */
     for (let property in ordersList[orderIndex]) {
         for (data in newData) {
             if (newData[data] && data === property) ordersList[orderIndex][data] = newData[data];
@@ -64,6 +64,17 @@ server.put('/order/:id', (req, res) => {
     }
 
     return res.json({ updatedOrder: ordersList[orderIndex] });
+});
+
+server.delete('/order/:id', (req, res) => {
+    // finding order
+    const orderId = req.params.id;
+    const orderIndex = ordersList.findIndex(order => order.id === orderId);
+
+    // deleting order
+    ordersList.splice(orderIndex, 1);
+
+    return res.status(204).json();
 });
 
 server.listen(port, () => {
