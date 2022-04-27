@@ -30,7 +30,7 @@ server.post('/order', (req, res) => {
 });
 
 // route to list all orders
-server.get('/orders', (req, res) => {
+server.get('/order', (req, res) => {
     return res.json(ordersList);
 });
 
@@ -75,6 +75,21 @@ server.delete('/order/:id', (req, res) => {
     ordersList.splice(orderIndex, 1);
 
     return res.status(204).json();
+});
+
+server.get('/order/:id', (req, res) => {
+    const orderId = req.params.id;
+    const orderIndex = ordersList.findIndex(order => order.id === orderId);
+
+    return res.json({ order: ordersList[orderIndex] });
+});
+
+server.patch('/order/:id', (req, res) => {
+    const orderId = req.params.id;
+    const orderIndex = ordersList.findIndex(order => order.id === orderId);
+
+    ordersList[orderIndex].status = 'Pronto';
+    return res.json({ order: ordersList[orderIndex] });
 });
 
 server.listen(port, () => {
