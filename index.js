@@ -8,10 +8,39 @@ const port = 3000;
 // orders made
 const ordersList = [];
 
+// middlewares
+
+const checkIdExistence = (req, res, next) => {
+    // finding order by id
+    const orderId = req.params.id;
+    const orderIndex = ordersList.findIndex(order => order.id === orderId);
+
+    // return error if not found
+    if (orderIndex < 0) {
+        return res.status(404).json({ error: 'Order Not Found' });
+    }
+
+    // incorporating the order index in request
+    req.orderIndex = orderIndex;
+
+    next();
+};
+
+// verify if client is trying to change or add id or status information
+const verifyClientData = (req, res, next) => {
+    const { status, id } = req.body;
+
+    if (status || id) {
+        return res.status(401).json({ error: 'Unable to change id or status information' });
+    }
+
+    next();
+};
+
 // routes
 
 // route to request order
-server.post('/order', (req, res) => {
+server.post('/order', verifyClientData, (req, res) => {
     /* request(body) pattern:
         {
             "order": "X-Salada, 2 batatas grandes, 1 coca-cola",
@@ -34,62 +63,39 @@ server.get('/order', (req, res) => {
     return res.json(ordersList);
 });
 
-// route to update an order (by its id)
-server.put('/order/:id', (req, res) => {
-    // finding order
-    const orderId = req.params.id;
-    const orderIndex = ordersList.findIndex(order => order.id === orderId);
-
-    // verifying data
-    const { status, id } = req.body;
-    if (status || id) {
-        return res.status(401).json({ error: 'Unable to change id or status information' });
-    }
-
+// route to update an order (by id)
+server.put('/order/:id', checkIdExistence, verifyClientData, (req, res) => {
     // receiving order data
     const { order, clienteName, price } = req.body;
     const newData = { order, clienteName, price };
 
-    /*
-    function to avoid code repetition like:
-        if (order) ordersList[orderIndex].order = order;
-        if (clienteName) ordersList[orderIndex].clienteName = clienteName;
-        if (price) ordersList[orderIndex].price = price;
-
-    so, this function allows the user to update one or more data from a order */
-    for (let property in ordersList[orderIndex]) {
+    // function to update one or more data from a order
+    for (let property in ordersList[req.orderIndex]) {
         for (data in newData) {
-            if (newData[data] && data === property) ordersList[orderIndex][data] = newData[data];
+            if (newData[data] && data === property) ordersList[req.orderIndex][data] = newData[data];
         }
     }
 
-    return res.json({ updatedOrder: ordersList[orderIndex] });
+    return res.json({ updatedOrder: ordersList[req.orderIndex] });
 });
 
-server.delete('/order/:id', (req, res) => {
-    // finding order
-    const orderId = req.params.id;
-    const orderIndex = ordersList.findIndex(order => order.id === orderId);
-
-    // deleting order
-    ordersList.splice(orderIndex, 1);
+// route to delete an order (by id)
+server.delete('/order/:id', checkIdExistence, (req, res) => {
+    // deleting order from array
+    ordersList.splice(req.orderIndex, 1);
 
     return res.status(204).json();
 });
 
-server.get('/order/:id', (req, res) => {
-    const orderId = req.params.id;
-    const orderIndex = ordersList.findIndex(order => order.id === orderId);
-
-    return res.json({ order: ordersList[orderIndex] });
+// route to get specific order (by id)
+server.get('/order/:id', checkIdExistence, (req, res) => {
+    return res.json({ order: ordersList[req.orderIndex] });
 });
 
-server.patch('/order/:id', (req, res) => {
-    const orderId = req.params.id;
-    const orderIndex = ordersList.findIndex(order => order.id === orderId);
-
-    ordersList[orderIndex].status = 'Pronto';
-    return res.json({ order: ordersList[orderIndex] });
+// route to update an order status (by id)
+server.patch('/order/:id', checkIdExistence, (req, res) => {
+    ordersList[req.orderIndex].status = 'Pronto';
+    return res.json({ order: ordersList[req.orderIndex] });
 });
 
 server.listen(port, () => {
