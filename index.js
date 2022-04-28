@@ -10,6 +10,13 @@ const ordersList = [];
 
 // middlewares
 
+const showMethodNUrl = (req, res, next) => {
+    console.log(`${req.method}: ${req.url}`);
+
+    next();
+};
+server.use(showMethodNUrl);
+
 const checkIdExistence = (req, res, next) => {
     // finding order by id
     const orderId = req.params.id;
@@ -53,7 +60,7 @@ server.post('/order', verifyClientData, (req, res) => {
     const { order, clienteName, price } = req.body;
     const registeredOrder = { id: uuid.v4(), order, clienteName, price, status: 'Em preparação' };
 
-    // verifying data
+    // verifying client post data
     for (orderData in registeredOrder) {
         if (!registeredOrder[orderData]) return res.status(400).json({ error: 'Missing Data' });
     }
