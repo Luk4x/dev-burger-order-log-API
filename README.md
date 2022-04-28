@@ -14,16 +14,14 @@
 
 # Dev Burger Order Log API
 <p align="center">
-  <video src="">
+  <video src="a">
 </p>
 <br>
 
 ## Sobre
-
 Essa projeto é uma API que realiza o cadastro de pedidos de uma hamburgueria.
 
 ### Rotas
-
 -   `POST /order`: Essa rota recebe o `pedido do cliente`, o `nome do cliente` e `o valor do pedido`. essas informações são passadas pelo `body` da requisição, e com base nelas um novo pedido é registrado dentro de um array, no seguinte formato:
     
     ```js
@@ -36,8 +34,7 @@ Essa projeto é uma API que realiza o cadastro de pedidos de uma hamburgueria.
     }
     ```
 
-    As informaçãos de `id` e `status` são geradas no sistema e incorporadas no pedido. Os ids são gerados fazendo o uso da biblioteca `uuid`, e o status é sempre de 'Em preparação' quando um pedido é feito.
-    
+    As informaçãos de `id` e `status` são geradas no sistema e incorporadas no pedido. Os ids são gerados fazendo o uso da biblioteca `uuid`, e o status é sempre de 'Em preparação' quando um pedido é feito.<br>
     Essa rota também tem uma verificação especial para impedir que pedidos com dados incompletos sejam feitos.
 
 -   `GET /order`: Essa rota lista todos os pedidos já feitos, exibindo os que está dentro do array.
@@ -82,7 +79,7 @@ Ao chamar a rota `PATCH /order/ac3ebf68-e0ad-4c1d-9822-ff1b849589a8`, o array fi
 ### Middlewares
 - `checkIdExistence`: Sua função é verificar se o ID recebido existe e tomar medidas em caso de inexistência. Ele é usado em todas as rotas que recebem um ID.
 
-- `showMethodNUrl`: Sua função é mostrar o método da requisição(GET,POST,PUT,DELETE, etc) e também a url da requisição. Ele é usado em todas as requisições.
+- `showMethodNUrl`: Sua função é mostrar no console o método(GET,POST,PUT,DELETE, etc) e também a url da requisição. Ele é usado em todas as requisições.
 
 - `verifyClientData`: Sua função é verificar os dados do cliente enviados pelo `body`, e tomar medidas caso essa requisição tenha a intenção de modificar dados que o cliente não tem permissão.
 
