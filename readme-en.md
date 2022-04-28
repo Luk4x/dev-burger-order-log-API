@@ -13,29 +13,42 @@
 <br>
 
 # Dev Burger Order Log API
+<p align="center">
+  <video src="a">
+</p>
+<br>
 
-## Sobre
+## About
+This project is an API that performs the registration of orders for a hamburger shop.
 
-É uma API que realiza o cadastro de pedidos de uma hamburgueria.
+### Routes
+-   `POST /order`: This route receives the customer's order, the customer's name, and the order amount. This information is passed by the `body` of the request, and based on it a new request is registered inside an array, in the following format:
+    
+    ```js
+    {
+      id: "ac3ebf68-e0ad-4c1d-9822-ff1b849589a8",
+      order: "X- Salada, 2 batatas grandes, 1 coca-cola",
+      clientName:"José",
+      price: 44.50,
+      status: "Em preparação"
+    }
+    ```
 
-### Rotas
+  The `id` and `status` information is generated in the system and incorporated in the request. The ids are generated using the `uuid` library, and the status is always 'In preparation' when an order is placed.<br>
+    This route also has a special check to prevent orders with incomplete data from being made.
 
--   `POST /order`: A rota deve receber o `pedido do cliente`, o `nome do cliente` e `o valor do pedido`, essas informações devem ser passadas dentro do corpo(body) da requisição, e com essas informações você deve registrar o novo pedido dentro de um array no seguinte formato:
-    `{ id: "ac3ebf68-e0ad-4c1d-9822-ff1b849589a8", order: "X- Salada, 2 batatas grandes, 1 coca-cola", clientName:"José", price: 44.50, status: "Em preparação" }`.
-    Não se esqueça que o ID deve ser gerado por você, dentro do código utilizando UUID V4, assim que o pedido é criado, você deve sempre colocar o `status` como "Em preparação".
+-   `GET /order`: This route lists all orders already placed, displaying the ones inside the array.
 
--   `GET /order`: Rota que lista todos os pedidos já feitos.
+-   `GET /order/:id`: Based on the `id` sent, this route returns a specific request.
 
--   `GET /order/:id`: Essa rota recebe o `id` nos parâmetros e deve retornar um pedido específico.
+-   `PUT /order/:id`: Based on the `id` sent, this route can change an order, which could be one or all of the order data (except the `id` and `status`, of course).
 
--   `PUT /order/:id`: O `id` do pedido deve ser enviado nos parâmetros da rota. Sua função é alterar um pedido, podendo ser um, ou todos os dados do pedido (exceto o `id` e o `status`, claro).
+-   `PATCH /order/:id`: Based on the `id` sent, once called this route changes the status of the received order to "Ready".
 
--   `PATCH /order/:id`: Essa rota recebe o `id` nos parâmetros e assim que ela for chamada, deve alterar o status do pedido recebido pelo id para "Pronto".
+-   `DELETE /order/:id`:  Based on the `id` sent, once called, delete the received order.
 
--   `DELETE /order/:id`: Quando chamada, deleta um pedido com base no `id` informado.
-
-#### Exemplos
-Ao chamar a rota `POST /order` repassando `{ order: "X- Salada, 2 batatas grandes, 1 coca-cola", clienteName:"José", price: 44.50 }`, o array fica dessa forma:
+#### Examples
+When calling the `POST /order` route passing `{ order: "X- Salad, 2 large potatoes, 1 coke", clienteName:"José", price: 44.50 }`, the array looks like this:
 
 ```js
 [
@@ -49,7 +62,7 @@ Ao chamar a rota `POST /order` repassando `{ order: "X- Salada, 2 batatas grande
 ];
 ```
 
-Ao chamar a rota `PATCH /order/ac3ebf68-e0ad-4c1d-9822-ff1b849589a8`, o array fica dessa forma:
+When calling the `PATCH /order/ac3ebf68-e0ad-4c1d-9822-ff1b849589a8` route, the array looks like this:
 
 ```js
 [
@@ -64,32 +77,32 @@ Ao chamar a rota `PATCH /order/ac3ebf68-e0ad-4c1d-9822-ff1b849589a8`, o array fi
 ```
 
 ### Middlewares
-- `checkIdExistence`: Sua função é verificar se o ID recebido existe e tomar medidas em caso de inexistência. Ele é usado em todas as rotas que recebem um ID.
+- `checkIdExistence`: Its function is to check if the received ID exists and to take action if it does not. It is used on all routes that are given an ID.
 
-- `showMethodNUrl`: Sua função é mostrar o método da requisição(GET,POST,PUT,DELETE, etc) e também a url da requisição. Ele é usado em todas as requisições.
+- `showMethodNUrl`: Its function is to show the method (GET,POST,PUT,DELETE, etc) on the console and also the url of the request. It is used in all requests.
 
-- `verifyClientData`: Sua função é verificar os dados do cliente enviados pelo `body`, e tomar medidas caso essa requisição tenha a intenção de modificar dados que o cliente não tem permissão.
+- `verifyClientData`: Its function is to verify the customer data sent by the `body`, and take action if this request intends to modify data that the customer does not have permission to.
 
-### Como usar
-Para clonar e executar este projeto, você precisará do [Git](https://git-scm.com/) e [Node.js v16.13.2](https://nodejs.org/en/) ou superior instalados em seu computador.<br>No terminal:
+## How to use
+To clone and run this application, you'll need [Git](https://git-scm.com/) and [Node.js v16.13.2](https://nodejs.org/en/) or higher installed on your computer.<br>In terminal:
 
 ```bash
-# Clone esse repositório:
+# Clone this repository:
 $ git clone https://github.com/Luk4x/dev-burger-order-log-API.git
 
-# Entre no repositório:
+# Go into the repository:
 $ cd dev-burger-order-log-API
 
-# Instalar dependências 
+# Install dependencies: 
 $ npm i
 
-# Executar o projeto
+# Run the project:
 $ npm run server
 
-# O servidor irá iniciar em: http://localhost:3000/
+# The server will start at http://localhost:3000/
 ```
 
-## Contato dos Contribuintes
+## Contributors Contact
 <table>
   <tr>
     <td align="center">
