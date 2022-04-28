@@ -14,7 +14,7 @@
 
 # Dev Burger Order Log API
 <p align="center">
-  <video src="a">
+  <video src="https://user-images.githubusercontent.com/86276393/165772574-ff4b0ddf-12ab-4430-a444-1531fbd85aca.mp4">
 </p>
 <br>
 
@@ -22,7 +22,7 @@
 Essa projeto é uma API que realiza o cadastro de pedidos de uma hamburgueria.
 
 ### Rotas
--   `POST /order`: Essa rota recebe o `pedido do cliente`, o `nome do cliente` e `o valor do pedido`. essas informações são passadas pelo `body` da requisição, e com base nelas um novo pedido é registrado dentro de um array, no seguinte formato:
+-   `POST /order`: Essa rota recebe o pedido do cliente, o nome do cliente e o valor do pedido. essas informações são passadas pelo `body` da requisição, e com base nelas um novo pedido é registrado dentro de um array, no seguinte formato:
     
     ```js
     {
