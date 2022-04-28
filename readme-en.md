@@ -14,7 +14,7 @@
 
 # Dev Burger Order Log API
 <p align="center">
-  <video src="a">
+  <video src="https://user-images.githubusercontent.com/86276393/165772574-ff4b0ddf-12ab-4430-a444-1531fbd85aca.mp4">
 </p>
 <br>
 
