@@ -19,7 +19,7 @@
 <br>
 
 ## Sobre
-Essa projeto é uma API que realiza o cadastro de pedidos de uma hamburgueria.
+Esse projeto é uma API que realiza o cadastro de pedidos de uma hamburgueria.
 
 ### Rotas
 -   `POST /order`: Essa rota recebe o pedido do cliente, o nome do cliente e o valor do pedido. essas informações são passadas pelo `body` da requisição, e com base nelas um novo pedido é registrado dentro de um array, no seguinte formato:
