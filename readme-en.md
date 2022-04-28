@@ -13,45 +13,29 @@
 <br>
 
 # Dev Burger Order Log API
-<p align="center">
-  <video src="">
-</p>
-<br>
 
 ## Sobre
 
-Essa projeto é uma API que realiza o cadastro de pedidos de uma hamburgueria.
+É uma API que realiza o cadastro de pedidos de uma hamburgueria.
 
 ### Rotas
 
--   `POST /order`: Essa rota recebe o `pedido do cliente`, o `nome do cliente` e `o valor do pedido`. essas informações são passadas pelo `body` da requisição, e com base nelas um novo pedido é registrado dentro de um array, no seguinte formato:
-    
-    ```js
-    {
-      id: "ac3ebf68-e0ad-4c1d-9822-ff1b849589a8",
-      order: "X- Salada, 2 batatas grandes, 1 coca-cola",
-      clientName:"José",
-      price: 44.50,
-      status: "Em preparação"
-    }
-    ```
+-   `POST /order`: A rota deve receber o `pedido do cliente`, o `nome do cliente` e `o valor do pedido`, essas informações devem ser passadas dentro do corpo(body) da requisição, e com essas informações você deve registrar o novo pedido dentro de um array no seguinte formato:
+    `{ id: "ac3ebf68-e0ad-4c1d-9822-ff1b849589a8", order: "X- Salada, 2 batatas grandes, 1 coca-cola", clientName:"José", price: 44.50, status: "Em preparação" }`.
+    Não se esqueça que o ID deve ser gerado por você, dentro do código utilizando UUID V4, assim que o pedido é criado, você deve sempre colocar o `status` como "Em preparação".
 
-    As informaçãos de `id` e `status` são geradas no sistema e incorporadas no pedido. Os ids são gerados fazendo o uso da biblioteca `uuid`, e o status é sempre de 'Em preparação' quando um pedido é feito.
-    
-    Essa rota também tem uma verificação especial para impedir que pedidos com dados incompletos sejam feitos.
+-   `GET /order`: Rota que lista todos os pedidos já feitos.
 
--   `GET /order`: Essa rota lista todos os pedidos já feitos, exibindo os que está dentro do array.
+-   `GET /order/:id`: Essa rota recebe o `id` nos parâmetros e deve retornar um pedido específico.
 
--   `GET /order/:id`: Com base no `id` enviado, essa rota retorna um pedido específico.
+-   `PUT /order/:id`: O `id` do pedido deve ser enviado nos parâmetros da rota. Sua função é alterar um pedido, podendo ser um, ou todos os dados do pedido (exceto o `id` e o `status`, claro).
 
--   `PUT /order/:id`: Com base no `id` enviado, essa rota pode alterar um pedido, podendo ser um, ou todos os dados do pedido (exceto o `id` e o `status`, claro).
+-   `PATCH /order/:id`: Essa rota recebe o `id` nos parâmetros e assim que ela for chamada, deve alterar o status do pedido recebido pelo id para "Pronto".
 
--   `PATCH /order/:id`: Com base no `id` enviado, assim que chamada, essa rota altera o status do pedido recebido para "Pronto".
-
--   `DELETE /order/:id`:  Com base no `id` enviado, assim que chamada, deleta o pedido recebido.
+-   `DELETE /order/:id`: Quando chamada, deleta um pedido com base no `id` informado.
 
 #### Exemplos
-Ao chamar a rota `POST /order` passando `{ order: "X- Salada, 2 batatas grandes, 1 coca-cola", clienteName:"José", price: 44.50 }`, o array fica dessa forma:
+Ao chamar a rota `POST /order` repassando `{ order: "X- Salada, 2 batatas grandes, 1 coca-cola", clienteName:"José", price: 44.50 }`, o array fica dessa forma:
 
 ```js
 [
@@ -86,7 +70,7 @@ Ao chamar a rota `PATCH /order/ac3ebf68-e0ad-4c1d-9822-ff1b849589a8`, o array fi
 
 - `verifyClientData`: Sua função é verificar os dados do cliente enviados pelo `body`, e tomar medidas caso essa requisição tenha a intenção de modificar dados que o cliente não tem permissão.
 
-## Como usar
+### Como usar
 Para clonar e executar este projeto, você precisará do [Git](https://git-scm.com/) e [Node.js v16.13.2](https://nodejs.org/en/) ou superior instalados em seu computador.<br>No terminal:
 
 ```bash

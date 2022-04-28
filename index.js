@@ -102,14 +102,14 @@ server.patch('/order/:id', checkIdExistence, (req, res) => {
     return res.json({ order: ordersList[req.orderIndex] });
 });
 
-server.listen(port, () => {
-    console.log(`㊗️ - server started in port: ${port}.`);
-});
-
 // route to delete an order (by id)
 server.delete('/order/:id', checkIdExistence, (req, res) => {
     // deleting order from array
     ordersList.splice(req.orderIndex, 1);
 
     return res.status(204).json();
+});
+
+server.listen(port, () => {
+    console.log(`㊗️ - server started in port: ${port}.`);
 });
