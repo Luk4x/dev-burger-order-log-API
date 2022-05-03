@@ -29,19 +29,34 @@ server.post('/order', verifyClientData, (req, res) => {
         if (!registeredOrder[orderData]) return res.status(400).json({ error: 'Missing Data' });
     }
 
-    // add new order to orders list and return
-    ordersList.push(registeredOrder);
-    return res.status(201).json(registeredOrder);
+    // trying to add new order to orders list and return
+    try {
+        ordersList.push(registeredOrder);
+        return res.status(201).json(registeredOrder);
+    } catch (err) {
+        console.error(`Something happened: ${err.message}`);
+        return res.status(500).json({ error: err.message });
+    }
 });
 
 // route to list all orders
 server.get('/order', (req, res) => {
-    return res.json(ordersList);
+    try {
+        return res.json(ordersList);
+    } catch (err) {
+        console.error(`Something happened: ${err.message}`);
+        return res.status(500).json({ error: err.message });
+    }
 });
 
 // route to get specific order (by id)
 server.get('/order/:id', checkIdExistence, (req, res) => {
-    return res.json({ order: ordersList[req.orderIndex] });
+    try {
+        return res.json({ order: ordersList[req.orderIndex] });
+    } catch (err) {
+        console.error(`Something happened: ${err.message}`);
+        return res.status(500).json({ error: err.message });
+    }
 });
 
 // route to update an order (by id)
@@ -50,28 +65,42 @@ server.put('/order/:id', checkIdExistence, verifyClientData, (req, res) => {
     const { order, clienteName, price } = req.body;
     const newData = { order, clienteName, price };
 
-    // function to update one or more data from a order
-    for (let orderData in ordersList[req.orderIndex]) {
-        for (data in newData) {
-            if (newData[data] && data === orderData) ordersList[req.orderIndex][data] = newData[data];
+    try {
+        // function to update one or more data from a order
+        for (let orderData in ordersList[req.orderIndex]) {
+            for (data in newData) {
+                if (newData[data] && data === orderData) ordersList[req.orderIndex][data] = newData[data];
+            }
         }
-    }
 
-    return res.json({ updatedOrder: ordersList[req.orderIndex] });
+        return res.json({ updatedOrder: ordersList[req.orderIndex] });
+    } catch (err) {
+        console.error(`Something happened: ${err.message}`);
+        return res.status(500).json({ error: err.message });
+    }
 });
 
 // route to update an order status (by id)
 server.patch('/order/:id', checkIdExistence, (req, res) => {
-    ordersList[req.orderIndex].status = 'Pronto';
-    return res.json({ order: ordersList[req.orderIndex] });
+    try {
+        ordersList[req.orderIndex].status = 'Pronto';
+        return res.json({ order: ordersList[req.orderIndex] });
+    } catch (err) {
+        console.error(`Something happened: ${err.message}`);
+        return res.status(500).json({ error: err.message });
+    }
 });
 
 // route to delete an order (by id)
 server.delete('/order/:id', checkIdExistence, (req, res) => {
-    // deleting order from array
-    ordersList.splice(req.orderIndex, 1);
-
-    return res.status(204).json();
+    try {
+        // deleting order from array
+        ordersList.splice(req.orderIndex, 1);
+        return res.status(204).json();
+    } catch (err) {
+        console.error(`Something happened: ${err.message}`);
+        return res.status(500).json({ error: err.message });
+    }
 });
 
 server.listen(port, () => {
