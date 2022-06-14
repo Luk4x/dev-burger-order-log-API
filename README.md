@@ -84,7 +84,7 @@ Ao chamar a rota `PATCH /order/ac3ebf68-e0ad-4c1d-9822-ff1b849589a8`, o array fi
 - `verifyClientData`: Sua função é verificar os dados do cliente enviados pelo `body`, e tomar medidas caso essa requisição tenha a intenção de modificar dados que o cliente não tem permissão.
 
 ## Como usar
-Para clonar e executar este projeto, você precisará do [Git](https://git-scm.com/) e [Node.js v16.13.2](https://nodejs.org/en/) ou superior instalados em seu computador.<br>No terminal:
+Para clonar e executar este projeto, você precisará do [Git](https://git-scm.com/), [Node.js v16.13.2](https://nodejs.org/en/) ou superior, e de um API Client como o [Insomnia](https://insomnia.rest/) instalados em seu computador.<br>No terminal:
 
 ```bash
 # Clone esse repositório:
@@ -99,7 +99,7 @@ $ npm i
 # Executar o projeto
 $ npm run server
 
-# O servidor irá iniciar em: http://localhost:3000/
+# O servidor irá iniciar em http://localhost:3000/, e você pode explorá-lo usando o Insomnia.
 ```
 
 ## Contato dos Contribuintes
