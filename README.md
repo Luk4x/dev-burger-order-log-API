@@ -18,8 +18,13 @@
 </p>
 <br>
 
+## Tecnologias utilizadas
+- [NodeJS](https://nodejs.org)
+- [ExpressJS](https://expressjs.com/)
+- [UUID](https://www.uuidgenerator.net/)
+
 ## Sobre
-Esse projeto é uma API que realiza o cadastro de pedidos de uma hamburgueria.
+Esse projeto é uma API que realiza o cadastro de pedidos de uma hamburgueria, e irá servir como base para a [Interface]() que irei construir.
 
 ### Rotas
 -   `POST /order`: Essa rota recebe o pedido do cliente, o nome do cliente e o valor do pedido. essas informações são passadas pelo `body` da requisição, e com base nelas um novo pedido é registrado dentro de um array, no seguinte formato:
