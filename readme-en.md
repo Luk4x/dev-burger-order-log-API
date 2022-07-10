@@ -18,8 +18,13 @@
 </p>
 <br>
 
+## Technologies used
+- [NodeJS](https://nodejs.org)
+- [ExpressJS](https://expressjs.com/)
+- [UUID](https://www.uuidgenerator.net/)
+
 ## About
-This project is an API that performs the registration of orders for a hamburger shop.
+This project is an API that performs the registration of orders for a hamburger shop, and will serve as the basis for the [Interface]() that I will build.
 
 ### Routes
 -   `POST /order`: This route receives the customer's order, the customer's name, and the order amount. This information is passed by the `body` of the request, and based on it a new request is registered inside an array, in the following format:
