@@ -2,10 +2,11 @@ const express = require('express');
 const uuid = require('uuid');
 const { showMethodNUrl, checkIdExistence, verifyClientData } = require('./middlewares');
 
+const port = 3001;
 const server = express();
 server.use(express.json());
 server.use(showMethodNUrl);
-const port = 3000;
+server.use(cors());
 
 // orders made
 const ordersList = [];
