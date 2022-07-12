@@ -24,7 +24,7 @@
 - [UUID](https://www.uuidgenerator.net/)
 
 ## Sobre
-Esse projeto é uma API que realiza o cadastro de pedidos de uma hamburgueria, e irá servir como base para a [Interface]() que irei construir.
+Esse projeto é uma API que realiza o cadastro de pedidos de uma hamburgueria, servindo como base para a [Interface](https://github.com/Luk4x/dev-burger-order-log-interface) que construí.
 
 ### Rotas
 -   `POST /order`: Essa rota recebe o pedido do cliente, o nome do cliente e o valor do pedido. essas informações são passadas pelo `body` da requisição, e com base nelas um novo pedido é registrado dentro de um array, no seguinte formato:
