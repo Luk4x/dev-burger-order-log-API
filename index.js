@@ -1,6 +1,7 @@
 const express = require('express');
 const uuid = require('uuid');
 const { showMethodNUrl, checkIdExistence, verifyClientData } = require('./middlewares');
+const cors = require('cors');
 
 const port = 3001;
 const server = express();
