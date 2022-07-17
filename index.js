@@ -105,7 +105,7 @@ server.delete('/order/:id', checkIdExistence, (req, res) => {
     }
 });
 
-server.listen(port, () => {
+server.listen(process.env.PORT || port, () => {
     console.log(`㊗️ - server started in port: ${port}.`);
 });
 
