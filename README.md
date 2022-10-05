@@ -40,7 +40,6 @@
 - [ExpressJS](https://expressjs.com/)
 - [UUID](https://www.uuidgenerator.net/)
 - [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-- [Yarn](https://yarnpkg.com/)
 
 ## 📝 Sobre
 
