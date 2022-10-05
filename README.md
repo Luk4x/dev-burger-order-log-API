@@ -20,7 +20,7 @@
   <a href="#-tecnologias-utilizadas">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-sobre">Sobre</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-rotas-e-exemplos">Rotas</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-middlewares">Rotas</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-middlewares">Middlewares</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-clonando-o-projeto">Clone</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-contato-dos-contribuintes">Contato</a>
 </p>
@@ -147,5 +147,5 @@ Para clonar e executar este projeto em seu computador, você precisará do [Git]
 </table>
 
 <p align="right">
-  <a href="#-imanager-project-api">Voltar ao Topo</a>
+  <a href="#-codeburger-project-api">Voltar ao Topo</a>
 </p>
