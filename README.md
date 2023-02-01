@@ -33,7 +33,7 @@
 </div>
 
 > **Caso o vídeo apresente algum erro, recarregue a página!**<br>
-> Acesse o projeto online **[AQUI](https://luk4x-codeburgerv1-api.herokuapp.com/order)**
+> Acesse o projeto online **[AQUI](https://luk4x-codeburger-api.onrender.com/order)**
 
 ## 🚀 Tecnologias utilizadas
 
